@@ -1,194 +1,368 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
-    "title": "OpenAPI Plant Store 2",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+    "title": "scrapingapi",
+    "description": "",
+    "version": "0.0.1"
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.scrapingapi.ai/api:4nvSuoD5"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      
     }
-  ],
+  },
   "paths": {
-    "/plants": {
+    "/Google_SERP_API": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "summary": "",
+        "description": "<br /><br />\n<b>Authentication:</b> not required",
+        "tags": [
+          "Google_SERP_API"
+        ],
+        "security": [
+          
+        ],
         "parameters": [
           {
-            "name": "limit",
+            "name": "query",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "google_domain",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gl",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "device",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "output",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "num",
+            "in": "query",
+            "description": "",
+            "required": false,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int64"
+            }
+          },
+          {
+            "name": "hl",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Success!",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Input Error. Check the request payload for issues."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Access denied. Additional privileges are needed access the requested resource."
+          },
+          "404": {
+            "description": "Not Found. The requested resource does not exist."
+          },
+          "429": {
+            "description": "Rate Limited. Too many requests."
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/ScrapeURL": {
+      "get": {
+        "summary": "",
+        "description": "<br /><br />\n<b>Authentication:</b> not required",
+        "tags": [
+          "ScrapeURL"
+        ],
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "super",
+            "in": "query",
+            "description": "Use residential proxyies",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "geoCode",
+            "in": "query",
+            "description": "Use Geo targeting",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "setCookies",
+            "in": "query",
+            "description": "Set cookies if you want",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "device",
+            "in": "query",
+            "description": "Mobile or desktop",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result1": {
+                      "type": "string"
+                    }
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Input Error. Check the request payload for issues."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Access denied. Additional privileges are needed access the requested resource."
+          },
+          "404": {
+            "description": "Not Found. The requested resource does not exist."
+          },
+          "429": {
+            "description": "Rate Limited. Too many requests."
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/company_api": {
+      "get": {
+        "summary": "",
+        "description": "<br /><br />\n<b>Authentication:</b> not required",
+        "tags": [
+          "company_api"
+        ],
+        "security": [
+          
+        ],
+        "parameters": [
+          {
+            "name": "website",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    
+                  }
                 }
               }
             }
+          },
+          "400": {
+            "description": "Input Error. Check the request payload for issues."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Access denied. Additional privileges are needed access the requested resource."
+          },
+          "404": {
+            "description": "Not Found. The requested resource does not exist."
+          },
+          "429": {
+            "description": "Rate Limited. Too many requests."
+          },
+          "500": {
+            "description": "Unexpected error"
           }
         }
-      },
+      }
+    },
+    "/linkedin-profile": {
       "post": {
-        "description": "Creates a new plant in the store",
+        "summary": "linkedin profile details endpoint",
+        "description": "linkedin profile details endpoint\n<br /><br />\n<b>Authentication:</b> not required",
+        "tags": [
+          "linkedin-profile"
+        ],
+        "security": [
+          
+        ],
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Input Error. Check the request payload for issues."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Access denied. Additional privileges are needed access the requested resource."
+          },
+          "404": {
+            "description": "Not Found. The requested resource does not exist."
+          },
+          "429": {
+            "description": "Rate Limited. Too many requests."
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        },
         "requestBody": {
-          "description": "Plant to add to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                "type": "object",
+                "properties": {
+                  "linkedin_username": {
+                    "type": "string",
+                    "description": ""
+                  }
                 }
               }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "linkedin_username": {
+                    "type": "string",
+                    "description": ""
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }
